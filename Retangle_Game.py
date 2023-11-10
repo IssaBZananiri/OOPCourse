@@ -43,33 +43,28 @@ class GuiRectangleClass(Recatangle):
         canvas.forward(self.point1.x_coordinate-self.point2.x_coordinate)
         canvas.left(90)
         canvas.forward(self.point1.y_corrdinate-self.point2.y_corrdinate)
-        
-
+        canvas.done()
               
 class GuiPoint(Point):
-    def draw(self,canvas, size=5, color='red'):
-        canvas.penup()
-        canvas.goto(self,point)
-        canvas.pendown()
-        canvas.dot(size=size, color=color, )
+    def draw(self,canvas):
+        canvas.up()
+        canvas.setpos(self.x_coordinate, self.y_corrdinate)
+        canvas.down()
+        canvas.dot(self.x_coordinate, self.y_corrdinate)
 
         canvas.done()
 
 
 
-
-
+my_turtle = turtle.Turtle()
 
 # Create a canvas Instance
-rectangle = GuiRectangleClass(Point(randint(0,400),randint(0,400)),Point(randint(0,400),randint(0,400)))
-
+rectangle = GuiRectangleClass(Point(randint(0,100),randint(0,100)),Point(randint(0,100),randint(0,100)))
+rectangle.draw(my_turtle)
 print ("Rectangle Coordinates: ", rectangle.point1.x_coordinate, ",", rectangle.point1.y_corrdinate, "and " , rectangle.point2.x_coordinate, ",", rectangle.point2.y_corrdinate)
-
 user_point = GuiPoint(float(input("Guess x:")), float(input("Guess y:")))
 user_area = float(input("Please Guess the Area"))
 
-turtle.Turtle()
-
-user_point.draw(turtle.Turtle(),user_point)
+#user_point.draw(my_turtle)
 
 print("Your point was inside a rectangle: ", user_point.falls_in_rectangle(rectangle.point1, rectangle.point2))
