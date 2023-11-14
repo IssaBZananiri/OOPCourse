@@ -17,6 +17,8 @@ Classes Needed:
             Attributes: filename
             Methods: generatepdf(flatmate1, flatmate2, bill).
 '''
+from fpdf import FPDF
+
 
 class Flatmate:
     def __init__(self, name, days_in_house):
@@ -32,18 +34,17 @@ class Bill:
         self.period = period
 
 class BillReport(Bill):
-    def __init__(self, filename):
-        self.filename = filename
-    
-    def get_to_pdf(specificbill, flatmate1, flatmate2):
+
+    def get_to_pdf(specificbill, mate1, mate2):
+        pass
         
         
 
 
-flatmate1 = Flatmate(input("Please Enter the name of Flatmate 1:"), float(input("Please Enter the Number of Days he/She Spent")))
-flatmate2 = Flatmate(input("Please Enter the name of Flatmate 2:"), float(input("Please Enter the Number of Days he/She Spent")))
+flatmate1 = Flatmate(input("Please Enter the name of Flatmate 1:"), float(input("Please Enter the Number of Days he/She Spent: ")))
+flatmate2 = Flatmate(input("Please Enter the name of Flatmate 2:"), float(input("Please Enter the Number of Days he/She Spent: ")))
 
-bill1 = BillReport(150, 30)
+bill1 = BillReport(150, 30, filename="Report")
 print("{} has to pay {} for the Stay".format(flatmate1.name, flatmate1.bill_by_person(bill1)))
 
 
