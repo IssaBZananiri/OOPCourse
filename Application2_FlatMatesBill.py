@@ -33,6 +33,28 @@ class Bill:
         self.amount = amount
         self.period = period
 
+
+class Report:
+    def __init__(flatmate1, flatmate2):
+        self.flatmate1 = flatmate1
+        self.flatmate2 = flatmate2
+
+    
+    def print_report(filename):
+        pdf = FPDF(orientation='P', unit='pt', format='A4')
+        pdf.add_page()
+        # Add some Text
+        pdf.set_font(family='Times', size=24, style='B')
+        pdf.cell(w=100, h=80, txt="FlatMate Bills", border=0, align="C", ln=1)
+
+        pdf.cell(w=50, h=40, txt="Period", border=0)
+        pdf.cell(w=50, h=40, flatmate1.bill_by_person(bill1), border=0)
+
+
+        pdf.output(filename)
+
+
+
 class BillReport(Bill):
 
     def get_to_pdf(specificbill, mate1, mate2):
@@ -46,6 +68,6 @@ flatmate2 = Flatmate(input("Please Enter the name of Flatmate 2:"), float(input(
 
 bill1 = BillReport(150, 30, filename="Report")
 print("{} has to pay {} for the Stay".format(flatmate1.name, flatmate1.bill_by_person(bill1)))
-
-
+report1 = Report(flatmate1, flatmate2)
+report1.print_report("Test.pdf")
 
